@@ -5,8 +5,8 @@
     dest: ./msfinstall
     mode: 0700
 
-#- name: Run metasploit installer.
-#  script: msfinstall
+- name: Run metasploit installer.
+  script: ./msfinstall
 
 - name: Cleanup metasploit install.
   file:

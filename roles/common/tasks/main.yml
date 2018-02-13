@@ -1,23 +1,19 @@
 ---
-- name: Get current Terminal profile.
-  shell: defaults read com.apple.Terminal 'Default Window Settings'
-  register: terminal_theme
-  changed_when: false
-
-- name: Ensure custom Terminal profile is added.
-  shell: open files/Basic-Custom.terminal
-  changed_when: false
-  when: "'Basic-Custom' not in terminal_theme.stdout"
-
-- name: Ensure custom Terminal profile is set as default.
-  shell: "{{ item }}"
-  with_items:
-    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Basic-Custom'
-    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Basic-Custom'
-  changed_when: false
-  when: "'Basic Custom ansi' not in terminal_theme.stdout"
+- import_tasks: terminal.yml
 
 - name: Install npm packages
   npm:  name={{ item }} global=yes
   with_items: "{{ npm_packages }}"
   changed_when: false
+
+- name: Create Software/bin directory
+  file:
+    path: "{{ user_path }}/Software/bin"
+    state: directory
+    mode: 0755
+
+- name: Create Projects directory
+  file:
+    path: "{{ user_path }}/Projects"
+    state: directory
+    mode: 0755

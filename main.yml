@@ -9,5 +9,5 @@
   roles:
     - geerlingguy.homebrew
     - common
-    - dockutil
     - ctf
+    - dockutil

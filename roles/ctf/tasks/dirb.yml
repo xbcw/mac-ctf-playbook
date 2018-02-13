@@ -1,0 +1,91 @@
+---
+# We need to delete the dirb directory because otherwise the playbook fails due to permissions
+- name: Remove existing dirb directory
+  file:
+    path:  "{{ user_path }}/Software/dirb222"
+    state: absent
+
+- name: Download dirb.
+  get_url:
+    url: https://sourceforge.net/projects/dirb/files/dirb/2.22/dirb222.tar.gz/download
+    dest: /tmp/dirb222.tar.gz
+
+- name: Extract dirb222.tar.gz into ~/Software
+  command: tar xfvz /tmp/dirb222.tar.gz -C "{{ user_path }}/Software/"
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/autom4te.cache"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/docs"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/gendict_src"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/utils"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/src"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/win32"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/wordlists"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/wordlists/others"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/wordlists/stress"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/wordlists/vulns"
+    mode: 0755
+
+- name: Fix dirb folder permissions
+  file:
+    path:  "{{ user_path }}/Software/dirb222/web2dic"
+    mode: 0755
+
+- name: Fix dirb configure permissions
+  file:
+    path: "{{ user_path }}/Software/dirb222/configure"
+    mode: 0700
+
+- name: Configure dirb222
+  command: chdir="{{ user_path }}/Software/dirb222/" "{{ user_path }}/Software/dirb222/configure"
+
+- name: Make dirb222
+  make:
+    chdir: "{{ user_path }}/Software/dirb222/"
+
+- name: Make install dirb222
+  make:
+    chdir: "{{ user_path }}/Software/dirb222/"
+    target: install
