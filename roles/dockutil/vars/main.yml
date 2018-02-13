@@ -1,24 +1,6 @@
 ---
-homebrew_install_path: /usr/local/homebrew
 homebrew_installed_packages:
-  - ansible
-  - docker
-  - git
-  - wget
   - dockutil
-  - npm
-
-homebrew_taps:
-  - caskroom/cask
-  - caskroom/versions
-
-homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
-  - google-chrome
-  - firefox
-  - virtualbox
-  - slack
-  - atom
 
 dockitems_to_remove:
   - Contacts
@@ -52,11 +34,8 @@ dockitems_to_persist:
     path: /Applications/Utilities/Terminal.app
     pos: 5
   - name: Launchpad
-    path: /Applications/Utilities/Launchpad.app 
+    path: /Applications/Utilities/Launchpad.app
     pos: 6
   - name: Mail
     path: /Applications/Main.app
     pos: 7
-
-npm_packages:
-  - webpack

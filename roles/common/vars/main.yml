@@ -1,0 +1,24 @@
+---
+homebrew_install_path: /usr/local/homebrew
+homebrew_installed_packages:
+  - ansible
+  - docker
+  - git
+  - wget
+  - npm
+  - nmap
+
+homebrew_taps:
+  - caskroom/cask
+  - caskroom/versions
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - google-chrome
+  - firefox
+  - virtualbox
+  - slack
+  - atom
+
+npm_packages:
+  - webpack

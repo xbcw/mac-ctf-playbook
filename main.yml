@@ -3,9 +3,11 @@
   user: brad
   connection: local
 
-  vars_files:
-    - vars/main.yml
+  vars:
+    user_path: /Users/brad
 
   roles:
-    - geerlingguy.homebrew
-    - dotfiles
+#    - geerlingguy.homebrew
+#    - common
+#    - dockutil
+    - ctf

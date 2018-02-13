@@ -1,0 +1,21 @@
+---
+- name: Download metasploit.
+  get_url:
+    url: https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
+    dest: ./msfinstall
+    mode: 0700
+
+#- name: Run metasploit installer.
+#  script: msfinstall
+
+- name: Cleanup metasploit install.
+  file:
+    path: ./msfinstall
+    state: absent
+
+- name: Add metasploit binaries path to .bashrc.
+  lineinfile:
+    path: "{{ user_path }}/.profile"
+    line: 'PATH=$PATH:/opt/metasploit-framework/bin/'
+    state: present
+    create: yes
