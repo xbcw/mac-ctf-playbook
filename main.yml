@@ -7,7 +7,7 @@
     user_path: /Users/brad
 
   roles:
-#    - geerlingguy.homebrew
-#    - common
-#    - dockutil
+    - geerlingguy.homebrew
+    - common
+    - dockutil
     - ctf
