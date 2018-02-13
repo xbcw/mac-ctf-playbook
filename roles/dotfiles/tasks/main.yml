@@ -5,17 +5,17 @@
   changed_when: false
 
 - name: Ensure custom Terminal profile is added.
-  shell: open files/Solarized-Dark.terminal
+  shell: open files/Basic-Custom.terminal
   changed_when: false
-  when: "'Solarized-Dark' not in terminal_theme.stdout"
+  when: "'Basic-Custom' not in terminal_theme.stdout"
 
 - name: Ensure custom Terminal profile is set as default.
   shell: "{{ item }}"
   with_items:
-    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized-Dark'
-    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized-Dark'
+    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Basic-Custom'
+    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Basic-Custom'
   changed_when: false
-  when: "'Solarized Dark ansi' not in terminal_theme.stdout"
+  when: "'Basic Custom ansi' not in terminal_theme.stdout"
 
 - name: Remove all crap from Dock
   shell: dockutil --remove '{{ item }}'
